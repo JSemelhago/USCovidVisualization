@@ -1,6 +1,12 @@
 import os
-from qgis.core import QgsVectorLayer
+import glob
 
+print('The current working directory is', os.getcwd())
+
+
+print(os.path.realpath('USCovidQGIS.py'))
+
+print('The current working directory has now moved to this script location at', os.getcwd())
 
 uscounties = '../data/uscounties_noterr.geojson'
 
