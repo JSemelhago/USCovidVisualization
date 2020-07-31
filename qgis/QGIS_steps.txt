@@ -1,0 +1,2 @@
+1. Import uscounties_noterr.geojson file as a layer
+2.
