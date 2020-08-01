@@ -1,2 +1,2 @@
-1. Import uscounties_noterr.geojson file as a layer
-2.
+1. Run USCovidQGIS.py in QGIS 
+2. 

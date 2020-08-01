@@ -9,7 +9,7 @@ os.chdir(script_location)
 
 print('The current working directory has now moved to this script location at', os.getcwd())
 
-uscounties = '../data/uscounties_noterr.geojson'
+uscounties = '../data/uscounties.geojson'
 
 county_layer = iface.addVectorLayer(uscounties, 'County Layer', 'ogr')
 
