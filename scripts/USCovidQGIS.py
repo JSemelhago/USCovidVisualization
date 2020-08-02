@@ -9,7 +9,7 @@ os.chdir(script_location)
 
 print('The current working directory has now moved to this script location at', os.getcwd())
 
-uscounties = '../data/uscounties.geojson'
+uscounties = '../data/uscounties_noterritories.geojson'
 
 county_layer = iface.addVectorLayer(uscounties, 'County Layer', 'ogr')
 
@@ -22,6 +22,7 @@ csv_layer = iface.addVectorLayer(data_location, 'Covid Data Layer', 'ogr')
 geo_field = 'GEO_ID'
 csv_field = 'county_fips'
 
+joinObject = QgsVectorLayerJoinInfo()
 joinObject.setJoinFieldName(csv_field)
 joinObject.setTargetFieldName(geo_field)
 joinObject.setJoinLayerId(csv_layer.id())
