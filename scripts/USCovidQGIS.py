@@ -17,10 +17,19 @@ uscounties = '../data/uscounties_noterritories.geojson'
 county_layer = iface.addVectorLayer(uscounties, 'County Layer', 'ogr')
 
 if not county_layer:
-    print('There was an error in loading the layer!')
-
+    print('There was an error in loading the county layer!')
+else:
+    print('County layer successfully loaded')
+    
 data_location = glob.glob('../output/Processed*')[0]
 csv_layer = iface.addVectorLayer(data_location, 'Covid Data Layer', 'ogr')   
+
+
+if not csv_layer:
+    print('There was an error in loading the csv layer!')
+else:
+    print('Csv layer successfully loaded')
+        
 
 geo_field = 'GEO_ID'
 csv_field = 'county_fips'
@@ -34,9 +43,14 @@ joinObject.setUsingMemoryCache(True)
 joinObject.setJoinLayer(csv_layer)
 county_layer.addJoin(joinObject)
 
+if not joinObject:
+    print('There was an error in combining the layers!')
+else:
+    print('Layers were combined successfully')
+
 colour_list = []
 
-#INTERVAL NUMBER
+#INTERVAL NUMBER (NUMBER OF COLOUR GROUPS) - CHANGE IF DESIRED
 interval = 10
 
 
@@ -45,7 +59,7 @@ interval = 10
 #To get real number of spaces
 interval+=1
 
-cmap = cm.get_cmap('viridis', interval)
+cmap = cm.get_cmap('viridis', interval+1)
 
 #Generate Viridis colours
 for i in range(cmap.N):
@@ -53,6 +67,11 @@ for i in range(cmap.N):
     rgb = cmap(i)[:3]
     #Convert to hex
     colour_list.append(mpl.colors.rgb2hex(rgb))
+    
+if not colour_list:
+    print('There was an error in generating the colours!')
+else:
+    print('Colour scale was generated successfully')
 
 field_names = [field.name() for field in county_layer.fields()]
 regex = re.compile(".*cases_per_100k")
@@ -77,3 +96,15 @@ def apply_graduation(colour_list, interval):
     print('Choropleth map has been created')
     
 apply_graduation(colour_list, interval)
+
+processed_name = (data_location.split('\\')[-1]).split('.')[0]
+
+
+_writer = QgsVectorFileWriter.writeAsVectorFormat(county_layer, '../output/shapefiles/'+processed_name+'.shp','utf-8', driverName = 'ESRI Shapefile')
+
+if not _writer:
+    print('There was an error in saving the shapefile!')
+else:
+    print('Shapefile successfully saved')
+
+
