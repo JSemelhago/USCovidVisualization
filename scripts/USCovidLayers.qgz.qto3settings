@@ -1,0 +1,29 @@
+{
+  "CAMERA": "PERSPECTIVE",
+  "DECOR": {
+    "Label": {
+      "Footer": "Source: USFactbook",
+      "Header": "US Covid Cases Per 100k"
+    },
+    "NorthArrow": {
+      "color": "0xff0004",
+      "visible": true
+    }
+  },
+  "LAYERS": [
+    {
+      "geomType": 3,
+      "layerId": "County_Layer_0af13567_3e21_4d12_ab4b_fcdaae1edd0f",
+      "name": "County Layer uscounties_noterritories",
+      "properties": {},
+      "visible": false
+    },
+    {
+      "geomType": 0,
+      "layerId": "FLAT",
+      "name": "Flat Plane",
+      "properties": {},
+      "visible": false
+    }
+  ]
+}
