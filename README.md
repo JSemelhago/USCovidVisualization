@@ -18,10 +18,10 @@ Use `git clone` to clone this repository in your local directory.
 
 ### Steps to Run
 
-1. Run `python3 USCovidAnalysis.py` first to produce the input files
+1. Run `python3 USCovidAnalysis.py` first to produce the input data file
 2. Open QGIS and upload `USCovidQGIS.py` to the QGIS Python console and run it
 3. Once the layers have been generated, install the `Qgis2threejs` plugin 
-4. Upload `USCovidLayers.qgz.qto3settings` and save the 3D choropleth output as a `html` file
+4. Upload `USCovidLayers.qgz.qto3settings` and save the 3D choropleth output as an `html` file
 
 ### Built With
 
@@ -43,10 +43,13 @@ The `html` outputs will not run locally so it is important to run the program ag
 
 Because the `html` outputs cannot be run locally, sample screenshots found under `output/screenshots/` were taken for when the program was run on July 17th, 2020.
 
+The following is one of the sample screenshots produced by the scripts:
+
+![2020-07-17 Output](/output/screenshots/Original.png?raw=true "3D Choropleth Map of the United States on July 17th, 2020")
+
 ### `.csv` Files
 
 In order to get Covid per capita, it was necessary to download a population file and format the Covid county data to match the `.geojson` county names. The outputted `.csv` file is used as an input file in the QGIS script.
-
 
 ## Author
 
